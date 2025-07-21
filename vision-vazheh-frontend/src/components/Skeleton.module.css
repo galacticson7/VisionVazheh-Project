@@ -1,0 +1,34 @@
+/* src/components/Skeleton.module.css */
+.skeleton {
+  /* رنگ پایه خاکستری تیره و هماهنگ با تم */
+  background-color: #2d3748; 
+  position: relative;
+  overflow: hidden; /* مهم برای انیمیشن */
+  display: block; /* برای اینکه عرض و ارتفاع را قبول کند */
+}
+
+/* این بخش، نوار درخشان را ایجاد می‌کند */
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* یک گرادیانت روشن که از روی عنصر عبور می‌کند */
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.5s infinite;
+}
+
+/* انیمیشن حرکت نوار درخشان */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

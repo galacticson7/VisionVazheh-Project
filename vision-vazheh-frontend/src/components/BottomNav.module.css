@@ -1,0 +1,44 @@
+/* src/components/BottomNav.module.css */
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #1A202C;
+    border-top: 1px solid #4a5568;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    z-index: 100;
+}
+
+.iconWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #a0aec0;
+  text-decoration: none;
+  font-size: 0.8rem;
+  gap: 2px;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 0.8rem;
+  gap: 2px;
+  
+  /* استایل‌های مخصوص حالت فعال */
+  color: #3182ce;
+  font-weight: bold;
+}

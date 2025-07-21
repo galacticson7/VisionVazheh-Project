@@ -1,0 +1,69 @@
+/* src/pages/LessonDetailPage.module.css */
+.container {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.loadingText { color: #a0aec0; }
+
+/* کانتینر برای دکمه‌های جدید */
+.actionControls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* استایل پایه برای هر دو دکمه */
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 150px;
+  transition: all 0.3s ease;
+}
+.actionBtn:hover {
+  transform: translateY(-3px);
+}
+
+/* استایل دکمه فراموش کردم (قرمز) */
+.forgetBtn {
+  background-color: #9B2C2C;
+  color: white;
+  box-shadow: 0 0 15px rgba(229, 62, 62, 0.5);
+}
+.forgetBtn:hover {
+    box-shadow: 0 0 25px rgba(229, 62, 62, 0.8);
+}
+
+/* استایل دکمه بلد بودم (سبز) */
+.knowBtn {
+  background-color: #2F855A;
+  color: white;
+  box-shadow: 0 0 15px rgba(56, 161, 105, 0.5);
+}
+.knowBtn:hover {
+    box-shadow: 0 0 25px rgba(56, 161, 105, 0.8);
+}
+
+.message {
+  background-color: rgba(45, 55, 72, 0.9);
+  color: #FFC857;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 1px solid #FFC857;
+}

@@ -1,0 +1,74 @@
+/* src/components/LessonCard.module.css */
+.card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 200, 87, 0.4);
+  border-color: #FFC857;
+}
+
+/* --- استایل جدید برای کارت تکمیل شده --- */
+.completed {
+  border-color: #FFC857; /* var(--clr-accent) */
+  /* افکت درخشان جایگزین تیک سبز می‌شود */
+  box-shadow: 0 0 15px #FFC857;
+  animation: pulse-glow 2.5s infinite alternate;
+}
+
+/* --- انیمیشن جدید برای درخشش --- */
+@keyframes pulse-glow {
+  from {
+    box-shadow: 0 0 8px #FFC857;
+  }
+  to {
+    box-shadow: 0 0 20px #FFC857, 0 0 30px rgba(255, 200, 87, 0.4);
+  }
+}
+
+/* استایل‌های مربوط به آیکون تیک حذف شدند */
+
+.icon {
+  font-size: 2.5rem;
+  color: #FFC857;
+  margin-left: 1.5rem;
+  flex-shrink: 0;
+}
+
+.textContainer {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.grade {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #a0aec0;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  color: #a0aec0;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .arrow {
+  transform: translateX(-5px);
+  color: #FFC857;
+}

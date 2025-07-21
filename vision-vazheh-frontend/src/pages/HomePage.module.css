@@ -1,0 +1,16 @@
+/* src/pages/HomePage.module.css */
+.container {
+  width: 100%;
+}
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 200, 87, 0.5);
+}
+.lessonsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}

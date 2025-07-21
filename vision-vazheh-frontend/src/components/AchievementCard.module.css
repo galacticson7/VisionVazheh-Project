@@ -1,0 +1,43 @@
+/* src/components/AchievementCard.module.css */
+.card {
+  background: rgba(13, 27, 42, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  gap: 1rem;
+  transition: transform 0.2s, box-shadow 0.3s, border-color 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #FFC857;
+  border-color: #FFC857;
+}
+
+.iconWrapper {
+  font-size: 2.5rem;
+  color: #FFC857;
+  flex-shrink: 0;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #a0aec0;
+}

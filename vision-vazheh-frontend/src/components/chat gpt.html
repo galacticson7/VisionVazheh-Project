@@ -1,0 +1,65 @@
+// This is a placeholder JavaScript canvas game setup
+// You'll need HTML canvas and image/sprite assets for full visual quality
+
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+const motivationalText = "تو می‌تونی! ادامه بده!";
+let showFeathers = false;
+let correctAnswerChosen = false;
+
+const chicken = new Image();
+chicken.src = "high_quality_chicken.png"; // Better quality chicken image
+
+const feather = new Image();
+feather.src = "feather.png"; // High-res feather sprite for falling effect
+
+const shuttle = new Image();
+shuttle.src = "shuttle.png"; // Shuttle sprite
+
+const smoke = new Image();
+smoke.src = "smoke.png"; // Smoke trail
+
+function drawChicken() {
+  ctx.drawImage(chicken, 100, 100, 150, 150);
+  ctx.font = "24px Arial";
+  ctx.fillStyle = "black";
+  ctx.fillText(motivationalText, 90, 90);
+}
+
+function drawFeathers() {
+  for (let i = 0; i < 10; i++) {
+    const x = 100 + Math.random() * 150;
+    const y = 100 + Math.random() * 150;
+    ctx.drawImage(feather, x, y, 20, 20);
+  }
+}
+
+function drawShuttleWithSmoke() {
+  const x = 250;
+  const y = 100;
+  ctx.drawImage(smoke, x - 30, y + 60, 100, 40); // Smoke below
+  ctx.drawImage(shuttle, x, y, 60, 120);
+}
+
+function renderScene() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawChicken();
+  if (showFeathers) drawFeathers();
+  if (correctAnswerChosen) drawShuttleWithSmoke();
+}
+
+// Simulate correct answer choice
+function onCorrectAnswer() {
+  showFeathers = true;
+  correctAnswerChosen = true;
+  renderScene();
+}
+
+// Example trigger
+canvas.addEventListener("click", () => {
+  onCorrectAnswer();
+});
+
+// Initial render
+renderScene();

@@ -1,0 +1,161 @@
+/* src/pages/PracticePage.module.css */
+.practiceContainer {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.title {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.practiceSession {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loadingText {
+  color: #a0aec0;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.progressBar {
+  width: 100%;
+  max-width: 420px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #4a5568;
+}
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #FFC857, #fff);
+  box-shadow: 0 0 8px #FFC857;
+  transition: width 0.5s ease-in-out;
+  border-radius: 4px;
+}
+
+.flashcardArea {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.particles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+    z-index: 100;
+}
+.particle {
+    position: absolute;
+    background-color: #FFC857;
+    border-radius: 50%;
+    width: var(--size);
+    height: var(--size);
+    animation-name: burst;
+    animation-duration: var(--duration);
+    animation-delay: var(--delay);
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes burst {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translate(calc(cos(var(--angle)) * var(--distance)), calc(sin(var(--angle)) * var(--distance))) scale(0);
+        opacity: 0;
+    }
+}
+
+.actionButtons {
+  display: flex;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+.btnAction {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #4a5568;
+  border-radius: 50%;
+  background: rgba(13, 27, 42, 0.6);
+  color: #ffffff;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btnAction:hover {
+  transform: scale(1.1);
+}
+.btnForget:hover {
+  box-shadow: 0 0 20px #e53e3e;
+  color: #e53e3e;
+}
+.btnKnow:hover {
+  box-shadow: 0 0 20px #38A169;
+  color: #38A169;
+}
+
+.completionMessage {
+  padding: 2rem;
+  background-color: rgba(13, 27, 42, 0.6);
+  border-radius: 16px;
+  border: 1px solid #4a5568;
+  animation: completion-fade-in 0.5s ease-out;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+}
+.completionMessage h3 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.rocketIcon {
+  font-size: 4rem;
+  color: #FFC857;
+  margin-bottom: 1rem;
+  animation: rocket-float 3s ease-in-out infinite;
+}
+@keyframes completion-fade-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes rocket-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.upcomingReviews {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #4a5568;
+}
+.upcomingReviews h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #FFC857;
+}
+.upcomingReviews p {
+  margin: 0.5rem 0;
+  color: #a0aec0;
+}
+.upcomingReviews strong {
+  color: #ffffff;
+  font-size: 1.1em;
+}

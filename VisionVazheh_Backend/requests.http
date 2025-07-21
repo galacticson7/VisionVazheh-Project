@@ -1,0 +1,63 @@
+### 1. User Login
+POST http://127.0.0.1:8000/api/users/token/
+Content-Type: application/json
+
+{
+    "phone_number": "+989025372266",
+    "password": "Alizoraghi76"
+}
+
+
+### ------------------------------------------- ###
+
+
+### 2. Refresh Access Token
+POST http://127.0.0.1:8000/api/users/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "<PASTE_YOUR_REFRESH_TOKEN_HERE>"
+}
+
+
+### ------------------------------------------- ###
+
+
+### 3. Add Word to My List
+POST http://127.0.0.1:8000/api/words/1/add-to-my-list/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNzcyNjM2LCJpYXQiOjE3NTE3NzIzMzYsImp0aSI6ImYzMTg3ODNjOGZjNjQ3NGNhOTFkOTUxMDljYjljODk5IiwidXNlcl9pZCI6MX0.FuE4vDXfHPOW6HbO3OpZYP0jXZVE2eCwkUHvFmZA3dI
+
+{}
+
+
+### ------------------------------------------- ###
+
+
+### 4. Get My Personal Word List
+GET http://127.0.0.1:8000/api/progress/my-words/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNzcyNjM2LCJpYXQiOjE3NTE3NzIzMzYsImp0aSI6ImYzMTg3ODNjOGZjNjQ3NGNhOTFkOTUxMDljYjljODk5IiwidXNlcl9pZCI6MX0.FuE4vDXfHPOW6HbO3OpZYP0jXZVE2eCwkUHvFmZA3dI
+
+
+### ------------------------------------------- ###
+
+
+### 5. Get My Review List
+GET http://127.0.0.1:8000/api/progress/review-list/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNzcyNjM2LCJpYXQiOjE3NTE3NzIzMzYsImp0aSI6ImYzMTg3ODNjOGZjNjQ3NGNhOTFkOTUxMDljYjljODk5IiwidXNlcl9pZCI6MX0.FuE4vDXfHPOW6HbO3OpZYP0jXZVE2eCwkUHvFmZA3dI
+
+
+### ------------------------------------------- ###
+
+### 6. Mark a word as "Known"
+# این درخواست به سرور می‌گوید که شما لغت را بلد بودید و امتیاز و استریک شما را آپدیت می‌کند
+POST http://127.0.0.1:8000/api/progress/my-words/1/know/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNzcyNjM2LCJpYXQiOjE3NTE3NzIzMzYsImp0aSI6ImYzMTg3ODNjOGZjNjQ3NGNhOTFkOTUxMDljYjljODk5IiwidXNlcl9pZCI6MX0.FuE4vDXfHPOW6HbO3OpZYP0jXZVE2eCwkUHvFmZA3dI
+
+
+### ------------------------------------------- ###
+
+### 7. Mark a word as "Forgotten"
+POST http://127.0.0.1:8000/api/progress/my-words/1/forget/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNzcyNjM2LCJpYXQiOjE3NTE3NzIzMzYsImp0aSI6ImYzMTg3ODNjOGZjNjQ3NGNhOTFkOTUxMDljYjljODk5IiwidXNlcl9pZCI6MX0.FuE4vDXfHPOW6HbO3OpZYP0jXZVE2eCwkUHvFmZA3dI

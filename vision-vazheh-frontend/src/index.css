@@ -1,0 +1,67 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap');
+
+:root {
+  --font-main: 'Vazirmatn', sans-serif;
+  --clr-bg-dark: #0d1b2a;
+  --clr-text: #ffffff;
+  --clr-muted: #a0aec0;
+  --clr-accent: #FFC857;
+  --clr-danger: #e53e3e;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-text);
+  margin: 0;
+  font-family: var(--font-main);
+}
+
+#root {
+  width: 100%;
+}
+
+/* --- استایل‌های عمومی دکمه‌ها --- */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-neon {
+  background-color: #0c1a3e;
+  color: #00d9ff;
+  border-color: #00d9ff;
+  box-shadow: 0 0 5px #00d9ff, 0 0 15px #00d9ff;
+}
+.btn-neon:hover {
+  box-shadow: 0 0 10px #00d9ff, 0 0 30px #00d9ff;
+}
+
+.btn-secondary {
+  background-color: #4a5568;
+  color: white;
+}
+
+/* استایل دکمه خروج */
+.btn-danger {
+  background-color: rgba(229, 62, 62, 0.4);
+  color: var(--clr-text);
+  border-color: var(--clr-danger);
+}
+.btn-danger:hover {
+  background-color: var(--clr-danger);
+  box-shadow: 0 0 15px var(--clr-danger);
+}

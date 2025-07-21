@@ -1,0 +1,131 @@
+/* src/pages/HelpPage.module.css */
+.helpContainer {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  color: #FFC857;
+  text-shadow: 0 0 8px rgba(255, 200, 87, 0.5);
+}
+
+.accordionItem {
+  background-color: rgba(13, 27, 42, 0.6);
+  border: 1px solid #4a5568;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s;
+}
+.accordionItem[open] {
+    background-color: rgba(45, 55, 72, 0.7);
+    border-left: 5px solid #FFC857;
+}
+
+.accordionTitle {
+  padding: 1.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+.accordionTitle::-webkit-details-marker {
+  display: none;
+}
+.accordionTitle::after {
+  content: '+';
+  margin-right: auto;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+.accordionItem[open] .accordionTitle::after {
+    transform: rotate(45deg);
+}
+
+.accordionIcon {
+  color: #FFC857;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.accordionContent {
+  padding: 0 2rem 1.5rem 1.5rem;
+  color: #a0aec0;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  border-top: 1px solid #4a5568;
+  margin: 0 1.5rem;
+}
+.accordionContent p, .accordionContent ul {
+  margin: 1rem 0 0;
+}
+.accordionContent ul {
+  padding-right: 20px;
+}
+.accordionContent strong {
+    color: #ffffff;
+}
+.sectionDetail {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #4a5568;
+}
+.sectionDetail:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.sectionDetail h4 {
+  color: #ffffff;
+  margin-top: 0;
+}
+
+/* --- استایل‌های بخش جدید لیست دستاوردها --- */
+.achievementListSection {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #4a5568;
+}
+
+.listTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    color: #FFC857;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.achItem {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: rgba(13, 27, 42, 0.6);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 3px solid #FFC857;
+}
+
+.achIcon {
+    font-size: 2.5rem;
+    color: #FFC857;
+}
+
+.achText h4 {
+    margin: 0 0 0.5rem;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.achText p {
+    margin: 0;
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
