@@ -1,15 +1,16 @@
 // src/pages/PracticePage.jsx
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext'; // <-- مسیر به حالت صحیح برگشت
 import axiosInstance from '../api/axiosInstance';
 import AuthCallToAction from '../components/AuthCallToAction';
 import Flashcard from '../components/Flashcard';
 import { FaCheckCircle, FaTimesCircle, FaRocket } from 'react-icons/fa';
 import styles from './PracticePage.module.css';
-import usePageTitle from '../hooks/usePageTitle'; // --- اضافه شد
+import usePageTitle from '../hooks/usePageTitle';
+import PracticePageLoader from '../components/PracticePageLoader';
 
+// ... (کامپوننت UpcomingReviews بدون تغییر)
 function UpcomingReviews({ summary }) {
-  // ... کد این کامپوننت بدون تغییر ...
   if (!summary || (summary.tomorrow === 0 && summary.in_three_days === 0 && summary.in_a_week === 0)) {
     return null;
   }
@@ -24,8 +25,7 @@ function UpcomingReviews({ summary }) {
 }
 
 export default function PracticePage() {
-  usePageTitle('تمرین'); // --- اضافه شد
-  // ... بقیه کد بدون تغییر ...
+  usePageTitle('تمرین');
   const { isAuthenticated } = useAuth();
   const [reviewWords, setReviewWords] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,18 +39,20 @@ export default function PracticePage() {
       return;
     }
     setLoading(true);
-    Promise.all([
-      axiosInstance.get('/progress/review-list/'),
-      axiosInstance.get('/progress/upcoming-reviews/')
-    ]).then(([reviewResponse, upcomingResponse]) => {
-      setReviewWords(reviewResponse.data);
-      setInitialWordCount(reviewResponse.data.length);
-      setUpcomingSummary(upcomingResponse.data);
-      setLoading(false);
-    }).catch(error => {
-      console.error("Error fetching data:", error);
-      setLoading(false);
-    });
+    setTimeout(() => {
+        Promise.all([
+            axiosInstance.get('/progress/review-list/'),
+            axiosInstance.get('/progress/upcoming-reviews/')
+        ]).then(([reviewResponse, upcomingResponse]) => {
+            setReviewWords(reviewResponse.data);
+            setInitialWordCount(reviewResponse.data.length);
+            setUpcomingSummary(upcomingResponse.data);
+            setLoading(false);
+        }).catch(error => {
+            console.error("Error fetching data:", error);
+            setLoading(false);
+        });
+    }, 800);
   };
 
   useEffect(() => {
@@ -77,7 +79,7 @@ export default function PracticePage() {
   }
   
   if (loading) {
-    return <p className={styles.loadingText}>در حال آماده‌سازی تمرین...</p>;
+    return <PracticePageLoader />;
   }
 
   const answeredCount = initialWordCount - reviewWords.length;

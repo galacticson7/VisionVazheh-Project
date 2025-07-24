@@ -1,0 +1,7 @@
+django
+djangorestframework
+djangorestframework-simplejwt
+django-phonenumber-field[phonenumbers]
+django-cors-headers
+gtts
+Pillow

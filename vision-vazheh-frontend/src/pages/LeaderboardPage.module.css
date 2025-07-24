@@ -1,0 +1,94 @@
+/* src/pages/LeaderboardPage.module.css */
+.leaderboardContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+  color: #FFC857;
+  text-shadow: 0 0 15px rgba(255, 200, 87, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.userList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  background: rgba(45, 55, 72, 0.5);
+  border: 1px solid #4a5568;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.userRow.currentUser {
+  background: rgba(255, 200, 87, 0.1);
+  border-color: #FFC857;
+  box-shadow: 0 0 15px rgba(255, 200, 87, 0.4);
+  transform: scale(1.02);
+}
+
+.rank {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #a0aec0;
+  width: 50px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.rank[data-rank="1"] { color: #FFD700; text-shadow: 0 0 8px #FFD700; }
+.rank[data-rank="2"] { color: #C0C0C0; text-shadow: 0 0 8px #C0C0C0; }
+.rank[data-rank="3"] { color: #CD7F32; text-shadow: 0 0 8px #CD7F32; }
+
+.userInfo {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: 1.5rem;
+}
+
+.userName {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+
+.userScore {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #FFC857;
+}
+
+.loadingText {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 1.2rem;
+  padding: 2rem;
+}

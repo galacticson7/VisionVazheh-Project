@@ -1,15 +1,15 @@
 // src/pages/ProfilePage.jsx
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axiosInstance from '../api/axiosInstance';
 import AchievementCard from '../components/AchievementCard';
-import { FaStar, FaFire, FaPhone } from 'react-icons/fa';
+import { FaStar, FaFire, FaPhone, FaTrophy, FaChartBar } from 'react-icons/fa';
 import styles from './ProfilePage.module.css';
-import usePageTitle from '../hooks/usePageTitle'; // --- اضافه شد
+import usePageTitle from '../hooks/usePageTitle';
+import ProfilePageLoader from '../components/ProfilePageLoader'; 
 
 function StatCard({ icon, label, value }) {
-  // ... کد این کامپوننت بدون تغییر ...
   return (
     <div className={styles.statCard}>
       <div className={styles.statIcon}>{icon}</div>
@@ -22,69 +22,72 @@ function StatCard({ icon, label, value }) {
 }
 
 export default function ProfilePage() {
-  usePageTitle('پروفایل'); // --- اضافه شد
-  // ... بقیه کد بدون تغییر ...
-  const [user, setUser] = useState(null);
+  usePageTitle('پروفایل');
+  
+  const { user, logout } = useAuth();
   const [achievements, setAchievements] = useState([]);
-  const { logout } = useAuth();
+  const [rankInfo, setRankInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchProfileData = async () => {
-      try {
-        const userRes = await axiosInstance.get('/users/me/');
-        setUser(userRes.data);
-        const achRes = await axiosInstance.get('/progress/my-achievements/');
+    if (user) {
+      setLoading(true);
+      Promise.all([
+        axiosInstance.get('/progress/my-achievements/'),
+        axiosInstance.get('/progress/my-rank/')
+      ]).then(([achRes, rankRes]) => {
         setAchievements(achRes.data);
-      } catch (e) {
-        console.error("خطا در دریافت اطلاعات پروفایل:", e);
-      }
-    };
-    fetchProfileData();
-  }, []);
+        setRankInfo(rankRes.data);
+        setLoading(false);
+      }).catch(error => {
+        console.error("خطا در دریافت اطلاعات پروفایل:", error);
+        setLoading(false);
+      });
+    } else { setLoading(false); }
+  }, [user]);
 
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
 
-  if (!user) return <p className={styles.loadingText}>در حال بارگذاری اطلاعات...</p>;
+  if (loading || !user) return <ProfilePageLoader />;
 
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileHeader}>
-        <h2>پروفایل شما</h2>
+        {/* --- تغییر اصلی اینجاست --- */}
+        <h2>{user.username}</h2>
         <button onClick={handleLogout} className="btn btn-danger">خروج</button>
       </div>
       
       <div className={styles.statsGrid}>
-        <StatCard
-          icon={<FaPhone />}
-          label="شماره موبایل"
-          value={user.phone_number}
-        />
-        <StatCard
-          icon={<FaStar />}
-          label="امتیاز (Stardust)"
-          value={user.stardust_points}
-        />
-        <StatCard
-          icon={<FaFire />}
-          label="استریک روزانه"
-          value={user.streak}
-        />
+        <StatCard icon={<FaPhone />} label="شماره موبایل" value={user.phone_number} />
+        <StatCard icon={<FaStar />} label="امتیاز (Stardust)" value={user.stardust_points} />
+        <StatCard icon={<FaFire />} label="استریک روزانه" value={user.streak} />
       </div>
+
+      {rankInfo && (
+        <div className={styles.rankCard}>
+          <FaTrophy className={styles.rankIcon} />
+          <div className={styles.rankText}>
+            <p className={styles.rankLabel}>شما در رتبه</p>
+            <p className={styles.rankValue}>{rankInfo.rank}</p>
+            <p className={styles.rankLabel}>کهکشان قرار دارید!</p>
+          </div>
+        </div>
+      )}
+
+      <Link to="/leaderboard" className={styles.leaderboardLink}>
+        <FaChartBar /> مشاهده جدول کامل امتیازات
+      </Link>
 
       <div className={styles.achievementsSection}>
         <h3>مدال‌های شما</h3>
         {achievements.length > 0 ? (
           <div className={styles.achievementsGrid}>
-            {achievements.map(a => (
-              <AchievementCard
-                key={a.id}
-                achievement={a.achievement}
-              />
-            ))}
+            {achievements.map(a => (<AchievementCard key={a.id} achievement={a.achievement} />))}
           </div>
         ) : (
           <p className={styles.noAchievements}>هنوز مدالی کسب نکرده‌اید. به تلاش ادامه دهید!</p>

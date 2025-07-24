@@ -1,0 +1,90 @@
+/* src/components/TestResult.module.css */
+.resultContainer {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(13, 27, 42, 0.8);
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #FFC857;
+  box-shadow: 0 0 30px rgba(255, 200, 87, 0.3);
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.headerIcon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.pass { color: #FFC857; }
+.fail { color: #e53e3e; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.title {
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #a0aec0;
+  margin-bottom: 2rem;
+}
+
+.scoreInfo {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.2rem;
+}
+
+.pointsAwarded {
+  color: #38A169;
+  font-weight: bold;
+}
+
+.mistakesSection {
+  text-align: right;
+  margin-top: 2rem;
+  border-top: 1px solid #4a5568;
+  padding-top: 1.5rem;
+}
+
+.mistakesTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.mistakeItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(74, 85, 104, 0.5);
+}
+
+.mistakeWord {
+  color: #e53e3e;
+  font-weight: bold;
+}
+
+.correctMeaning {
+  color: #38A169;
+}
+
+.actionButtons {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

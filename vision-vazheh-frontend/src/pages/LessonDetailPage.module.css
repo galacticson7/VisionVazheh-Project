@@ -10,7 +10,6 @@
 
 .loadingText { color: #a0aec0; }
 
-/* کانتینر برای دکمه‌های جدید */
 .actionControls {
   display: flex;
   justify-content: center;
@@ -19,7 +18,6 @@
   margin-top: 1rem;
 }
 
-/* استایل پایه برای هر دو دکمه */
 .actionBtn {
   display: flex;
   align-items: center;
@@ -39,7 +37,6 @@
   transform: translateY(-3px);
 }
 
-/* استایل دکمه فراموش کردم (قرمز) */
 .forgetBtn {
   background-color: #9B2C2C;
   color: white;
@@ -49,7 +46,6 @@
     box-shadow: 0 0 25px rgba(229, 62, 62, 0.8);
 }
 
-/* استایل دکمه بلد بودم (سبز) */
 .knowBtn {
   background-color: #2F855A;
   color: white;
@@ -66,4 +62,57 @@
   border-radius: 8px;
   font-weight: bold;
   border: 1px solid #FFC857;
+}
+
+/* --- استایل‌های جدید برای پیام اتمام و دکمه آزمون --- */
+.completionContainer {
+  text-align: center;
+  background: rgba(13, 27, 42, 0.8);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid #FFC857;
+  box-shadow: 0 0 25px rgba(255, 200, 87, 0.3);
+  animation: fadeIn 0.5s ease-out;
+  width: 100%;
+  max-width: 450px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.completionContainer h3 {
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.completionContainer p {
+  color: #a0aec0;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.testButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  /* استفاده از استایل نئونی هماهنگ با بقیه برنامه */
+  background-color: #0c1a3e;
+  color: #00d9ff;
+  border: 1px solid #00d9ff;
+  box-shadow: 0 0 5px #00d9ff, 0 0 15px #00d9ff;
+}
+
+.testButton:hover {
+  box-shadow: 0 0 10px #00d9ff, 0 0 30px #00d9ff;
+  transform: scale(1.05);
 }

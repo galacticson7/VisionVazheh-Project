@@ -12,8 +12,9 @@ export default function Flashcard({ word }) {
 
   const handlePlayAudio = useCallback((event) => {
     event.stopPropagation();
-    if (word && word.audio_pronunciation) {
-      const audio = new Audio(word.audio_pronunciation);
+    // --- تغییر اصلی اینجاست: از فیلد جدید استفاده می‌کنیم ---
+    if (word && word.audio_pronunciation_url) {
+      const audio = new Audio(word.audio_pronunciation_url);
       audio.play().catch(e => console.error("Error playing audio:", e));
     }
   }, [word]);
@@ -28,7 +29,7 @@ export default function Flashcard({ word }) {
     <div className={styles.flashcard} onClick={handleFlip}>
       <div className={`${styles.cardInner} ${isFlipped ? styles.isFlipped : ''}`}>
         <div className={styles.cardFace + ' ' + styles.cardFront}>
-          {word.audio_pronunciation && (
+          {word.audio_pronunciation_url && (
             <button className={styles.audioButton} onClick={handlePlayAudio}>
               <FiVolume2 />
             </button>

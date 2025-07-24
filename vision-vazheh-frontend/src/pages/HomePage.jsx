@@ -3,13 +3,12 @@ import { useState, useEffect } from 'react';
 import axiosInstance from '../api/axiosInstance';
 import LessonCard from '../components/LessonCard';
 import styles from './HomePage.module.css';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext'; // <-- مسیر به حالت صحیح برگشت
 import usePageTitle from '../hooks/usePageTitle';
-import HomePageLoader from '../components/HomePageLoader'; // --- ۱. لودر جدید را ایمپورت می‌کنیم
+import HomePageLoader from '../components/HomePageLoader';
 
 export default function HomePage() {
   usePageTitle('خانه');
-
   const { isAuthenticated } = useAuth();
   const [lessons, setLessons] = useState([]);
   const [completedIds, setCompletedIds] = useState([]);
@@ -18,7 +17,6 @@ export default function HomePage() {
   useEffect(() => {
     if (isAuthenticated) {
       setLoading(true);
-      // یک تأخیر مصنوعی کوچک برای نمایش بهتر اسکلتون (در پروژه واقعی حذف شود)
       setTimeout(() => {
         Promise.all([
           axiosInstance.get('/lessons/'),
@@ -37,7 +35,6 @@ export default function HomePage() {
     }
   }, [isAuthenticated]);
 
-  // --- ۲. به جای متن ساده، از کامپوننت لودر استفاده می‌کنیم ---
   if (loading && isAuthenticated) {
     return <HomePageLoader />
   }

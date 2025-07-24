@@ -1,7 +1,7 @@
 // src/hooks/usePageTitle.js
 import { useEffect } from 'react';
 
-// این هوک سفارشی، عنوان صفحه را در تب مرورگر به‌روز می‌کند
+// این هوک هیچ ارتباطی با AuthContext ندارد و نباید داشته باشد
 function usePageTitle(title) {
   useEffect(() => {
     document.title = `${title} - ویژن واژه`;

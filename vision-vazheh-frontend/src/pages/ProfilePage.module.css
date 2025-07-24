@@ -11,12 +11,13 @@
 .profileHeader h2 {
   margin: 0;
   font-size: 1.8rem;
+  color: #ffffff;
 }
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem; /* کاهش فاصله پایینی */
 }
 .statCard {
   background: rgba(13, 27, 42, 0.6);
@@ -45,12 +46,73 @@
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
+  color: #ffffff;
+  overflow-wrap: break-word;
 }
 .statLabel {
   margin: 0;
   color: #a0aec0;
   font-size: 0.9rem;
 }
+
+/* --- استایل جدید برای کارت ویژه رتبه --- */
+.rankCard {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 200, 87, 0.2));
+  border: 1px solid #FFD700;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+.rankIcon {
+  font-size: 2.5rem;
+  color: #FFD700;
+}
+.rankText {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.rankLabel {
+  margin: 0;
+  color: #a0aec0;
+  font-size: 1rem;
+}
+.rankValue {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+/* --- استایل اصلاح‌شده دکمه برای هماهنگی با تم نئونی --- */
+.leaderboardLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
+  transition: all 0.3s ease;
+  /* استفاده از استایل‌های نئونی */
+  background-color: #0c1a3e;
+  color: #00d9ff;
+  border: 1px solid #00d9ff;
+  box-shadow: 0 0 5px #00d9ff, 0 0 15px #00d9ff;
+}
+.leaderboardLink:hover {
+  box-shadow: 0 0 10px #00d9ff, 0 0 30px #00d9ff;
+  transform: scale(1.03);
+}
+
 .achievementsSection h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -62,7 +124,7 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
 }
-.noAchievements, .loadingText {
+.noAchievements {
   color: #a0aec0;
   text-align: center;
   font-size: 1.1rem;

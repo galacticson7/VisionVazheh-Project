@@ -1,6 +1,6 @@
 // src/components/Header.jsx
 import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext'; // <-- مسیر صحیح
 import styles from './Header.module.css';
 import { FiLogIn, FiHelpCircle } from 'react-icons/fi';
 
@@ -14,7 +14,6 @@ function Header() {
           🚀 ویژن واژه
         </Link>
         <div className={styles.navLinks}>
-          {/* لینک جدید راهنما */}
           <Link to="/help" className={styles.helpLink}>
             <FiHelpCircle />
           </Link>

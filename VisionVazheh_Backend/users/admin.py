@@ -5,21 +5,23 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('phone_number', 'first_name', 'last_name', 'is_staff')
-    ordering = ('phone_number',)
-    search_fields = ('phone_number', 'first_name', 'last_name')
+    list_display = ('username', 'phone_number', 'stardust_points', 'is_staff')
+    ordering = ('-stardust_points',)
+    search_fields = ('username', 'phone_number')
     
-    # این بخش‌ها برای سازگاری با مدل جدید بدون یوزرنیم است
+    # فیلدهایی که در صفحه ویرایش کاربر در ادمین نمایش داده می‌شوند
     fieldsets = (
-        (None, {'fields': ('phone_number', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'grade', 'email')}),
+        (None, {'fields': ('username', 'password')}),
+        ('Personal info', {'fields': ('phone_number', 'grade')}),
+        ('Stats', {'fields': ('stardust_points', 'streak', 'last_activity_date')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
+    # فیلدهایی که هنگام ساخت کاربر جدید در ادمین نمایش داده می‌شوند
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('phone_number', 'password', 'password2'),
+            'fields': ('username', 'phone_number', 'password', 'password2'),
         }),
     )
 

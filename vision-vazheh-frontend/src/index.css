@@ -65,3 +65,26 @@ body {
   background-color: var(--clr-danger);
   box-shadow: 0 0 15px var(--clr-danger);
 }
+
+/* --- START: Overrides for React Phone Number Input --- */
+/* این کد جدید برای اصلاح ظاهر فیلد شماره تلفن است */
+.PhoneInput {
+  width: 100%;
+  height: 100%;
+  direction: ltr; /* جهت صحیح برای شماره تلفن */
+}
+.PhoneInputInput {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: white !important;
+  outline: none !important;
+  height: 100%;
+  font-size: 1rem;
+  font-family: var(--font-main); /* اطمینان از هماهنگی فونت */
+}
+.PhoneInputCountry {
+  display: flex;
+  align-items: center;
+}
+/* --- END: Overrides for React Phone Number Input --- */
